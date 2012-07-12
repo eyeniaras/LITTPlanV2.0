@@ -43,29 +43,6 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <widget class="QLabel" name="TransformNodeSelectorLabel">
-          <property name="text">
-           <string>Activate Transformation:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="qMRMLNodeComboBox" name="TransformNodeSelector">
-          <property name="nodeTypes">
-           <stringlist>
-            <string>vtkMRMLLinearTransformNode</string>
-           </stringlist>
-          </property>
-          <property name="renameEnabled">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="inputFiducialsNodeSelectorLabel">
@@ -100,7 +77,14 @@
         <item>
          <widget class="QPushButton" name="btnPath">
           <property name="text">
-           <string>Create Path</string>
+           <string>Show Path</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnHide">
+          <property name="text">
+           <string>Hide Path</string>
           </property>
          </widget>
         </item>
@@ -108,24 +92,6 @@
          <widget class="QPushButton" name="btnApplicator">
           <property name="text">
            <string>Locate Applicator</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <item>
-         <widget class="QPushButton" name="btnPoints">
-          <property name="text">
-           <string>Export Points</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnFEM">
-          <property name="text">
-           <string>Get FEM</string>
           </property>
          </widget>
         </item>
@@ -226,7 +192,7 @@
               <string>Global</string>
              </property>
              <property name="checked">
-              <bool>true</bool>
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -234,6 +200,9 @@
             <widget class="QRadioButton" name="LocalRadioButton">
              <property name="text">
               <string>Local</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -275,6 +244,29 @@
         </item>
        </layout>
       </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="TransformNodeSelectorLabel">
+          <property name="text">
+           <string>Activate Transformation:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="qMRMLNodeComboBox" name="TransformNodeSelector">
+          <property name="nodeTypes">
+           <stringlist>
+            <string>vtkMRMLLinearTransformNode</string>
+           </stringlist>
+          </property>
+          <property name="renameEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
@@ -288,6 +280,9 @@
      </property>
      <property name="text">
       <string>Transformed nodes</string>
+     </property>
+     <property name="collapsed">
+      <bool>true</bool>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
@@ -397,73 +392,112 @@
    <item>
     <widget class="ctkCollapsibleButton" name="CollapsibleButtonParameters">
      <property name="text">
-      <string>Parameters</string>
+      <string>Treatment Parameters</string>
      </property>
      <property name="contentsFrameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
-     <layout class="QFormLayout" name="formLayout">
-      <property name="fieldGrowthPolicy">
-       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-      </property>
+     <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="label_8">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Tissue Type:</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QComboBox" name="TissueSelector">
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <item>
+         <property name="text">
+          <string>Select a tissue</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>White Matter</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Grey Matter</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>CSF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tumor</string>
+         </property>
+        </item>
+       </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Thermal Conductivity:</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_5"/>
+       <widget class="QLineEdit" name="ThermalConductivity"/>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Tissue Perfusion:</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QLineEdit" name="lineEdit_4"/>
+       <widget class="QLineEdit" name="TissuePerfusion"/>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Optical Absorption:</string>
         </property>
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QLineEdit" name="OpticalAbsorption"/>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Optical Scattering:</string>
         </property>
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="OpticalScattering"/>
       </item>
       <item row="5" column="0">
-       <widget class="QPushButton" name="btnClear">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Clear</string>
+         <string>Optical Anisotrophy:</string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
+       <widget class="QLineEdit" name="OpticalAnisotrophy"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Power:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLineEdit" name="Power"/>
+      </item>
+      <item row="9" column="1">
        <widget class="QPushButton" name="btnBurn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -473,6 +507,23 @@
         </property>
         <property name="text">
          <string>Treat</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="ThermalDose"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Thermal Dose:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QPushButton" name="btnDefault">
+        <property name="text">
+         <string>Default</string>
         </property>
        </widget>
       </item>
@@ -781,6 +832,22 @@
     <hint type="destinationlabel">
      <x>214</x>
      <y>922</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TissueSelector</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>ThermalConductivity</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>863</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>892</y>
     </hint>
    </hints>
   </connection>
